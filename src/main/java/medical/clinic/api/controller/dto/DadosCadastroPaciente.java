@@ -1,4 +1,23 @@
 package medical.clinic.api.controller.dto;
 
-public record DadosCadastroPaciente(String nome, String cpf, String email, String telefone, DadosEndereco endereco) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record DadosCadastroPaciente(
+        @NotBlank
+        String nome,
+
+        @NotBlank
+        String cpf,
+
+        @Email
+        @NotBlank
+        String email,
+
+        @NotBlank
+        String telefone,
+
+        @NotNull
+        DadosEndereco endereco) {
 }
