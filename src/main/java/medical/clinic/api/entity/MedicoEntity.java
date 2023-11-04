@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import medical.clinic.api.dto.DadosAtualizacaoMedico;
 import medical.clinic.api.dto.DadosCadastroMedico;
 import medical.clinic.api.enums.Especialidade;
+
+import java.util.Optional;
 
 @Entity(name = "Medico")
 @Table(name = "medicos")
@@ -33,6 +36,8 @@ public class MedicoEntity {
 
     private EnderecoEntity endereco;
 
+    private Boolean ativo;
+
     public MedicoEntity(DadosCadastroMedico dados) {
         this.nome = dados.nome();
         this.cpf = dados.cpf();
@@ -41,5 +46,19 @@ public class MedicoEntity {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new EnderecoEntity(dados.endereco());
+        this.ativo = true;
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+        this.nome = (dados.nome() != null) ? dados.nome() : this.nome;
+        this.telefone = (dados.telefone() != null) ? dados.telefone() : this.telefone;
+
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        };
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

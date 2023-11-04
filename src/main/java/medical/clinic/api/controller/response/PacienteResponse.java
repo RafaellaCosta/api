@@ -4,6 +4,7 @@ import medical.clinic.api.dto.DadosCadastroPaciente;
 import medical.clinic.api.entity.PacienteEntity;
 
 public record PacienteResponse(
+        Long id,
         String nome,
         String cpf,
         String email,
@@ -11,6 +12,6 @@ public record PacienteResponse(
 ) {
 
     public PacienteResponse(PacienteEntity paciente) {
-        this(paciente.getNome(), paciente.getCpf(), paciente.getEmail(), paciente.getTelefone());
+        this(paciente.getId(), paciente.getNome(), paciente.getCpf(), paciente.getEmail(), paciente.getTelefone());
     }
 }

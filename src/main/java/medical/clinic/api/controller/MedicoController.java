@@ -2,6 +2,7 @@ package medical.clinic.api.controller;
 
 import jakarta.validation.Valid;
 import medical.clinic.api.controller.response.MedicoResponse;
+import medical.clinic.api.dto.DadosAtualizacaoMedico;
 import medical.clinic.api.dto.DadosCadastroMedico;
 import medical.clinic.api.entity.MedicoEntity;
 import medical.clinic.api.repository.MedicoRepository;
@@ -12,10 +13,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("medicos")
+@RequestMapping("/medicos")
 public class MedicoController {
 
     @Autowired
@@ -29,6 +28,20 @@ public class MedicoController {
 
     @GetMapping(path = "/buscarMedicos")
     public Page<MedicoResponse> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        return medicoRepository.findAll(paginacao).map(MedicoResponse::new);
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(MedicoResponse::new);
+    }
+
+    @PutMapping(path = "/atualizar")
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
+        var medico = medicoRepository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping(path = "/deletar/{id}")
+    @Transactional
+    public void deletar(@PathVariable Long id) {
+        var medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
     }
 }

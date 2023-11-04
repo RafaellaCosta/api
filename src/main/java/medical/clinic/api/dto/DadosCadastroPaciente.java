@@ -1,10 +1,13 @@
 package medical.clinic.api.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroPaciente(
+        @NotNull
+        Long id,
         @NotBlank
         String nome,
 
@@ -19,5 +22,8 @@ public record DadosCadastroPaciente(
         String telefone,
 
         @NotNull
-        DadosEndereco endereco) {
+        @Valid
+        DadosEndereco endereco,
+
+        Boolean ativo) {
 }
