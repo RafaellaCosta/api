@@ -1,11 +1,10 @@
-package medical.clinic.api.models;
+package medical.clinic.api.entity;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medical.clinic.api.controller.dto.DadosEndereco;
+import medical.clinic.api.dto.DadosEndereco;
 
 @Embeddable
 @Getter

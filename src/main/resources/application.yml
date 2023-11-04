@@ -6,4 +6,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
-    format-sql: true
+    properties:
+      hibernate:
+        format_sql: true

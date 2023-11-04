@@ -1,4 +1,4 @@
-package medical.clinic.api.controller.enuns;
+package medical.clinic.api.enums;
 
 public enum Especialidade {
     ORTOPEDISTA,

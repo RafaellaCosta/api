@@ -1,11 +1,11 @@
-package medical.clinic.api.controller.dto;
+package medical.clinic.api.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import medical.clinic.api.controller.enuns.Especialidade;
+import medical.clinic.api.enums.Especialidade;
 
 public record DadosCadastroMedico(
         @NotBlank

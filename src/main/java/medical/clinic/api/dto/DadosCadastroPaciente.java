@@ -1,4 +1,4 @@
-package medical.clinic.api.controller.dto;
+package medical.clinic.api.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

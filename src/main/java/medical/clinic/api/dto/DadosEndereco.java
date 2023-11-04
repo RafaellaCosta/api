@@ -1,4 +1,4 @@
-package medical.clinic.api.controller.dto;
+package medical.clinic.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
