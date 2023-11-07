@@ -9,8 +9,7 @@ import medical.clinic.api.dto.DadosAtualizacaoMedico;
 import medical.clinic.api.dto.DadosCadastroMedico;
 import medical.clinic.api.enums.Especialidade;
 
-import java.util.Optional;
-
+@Embeddable
 @Entity(name = "Medico")
 @Table(name = "medicos")
 @Getter
@@ -22,12 +21,10 @@ public class MedicoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
-
     private  String cpf;
-
     private String email;
-
     private String telefone;
     private String crm;
 
@@ -35,7 +32,6 @@ public class MedicoEntity {
     private Especialidade especialidade;
 
     private EnderecoEntity endereco;
-
     private Boolean ativo;
 
     public MedicoEntity(DadosCadastroMedico dados) {

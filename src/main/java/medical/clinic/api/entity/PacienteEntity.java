@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medical.clinic.api.dto.DadosAtualizacaoMedico;
 import medical.clinic.api.dto.DadosAtualizacaoPaciente;
 import medical.clinic.api.dto.DadosCadastroPaciente;
 
+@Embeddable
 @Entity(name = "Paciente")
 @Table(name = "paciente")
 @NoArgsConstructor
@@ -20,16 +20,15 @@ public class PacienteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String cpf;
     private String email;
     private String telefone;
     private EnderecoEntity endereco;
-    private Boolean ativo;
 
 
     public PacienteEntity(DadosCadastroPaciente dados) {
-        this.ativo = true;
         this.nome = dados.nome();
         this.cpf = dados.cpf();
         this.email = dados.email();

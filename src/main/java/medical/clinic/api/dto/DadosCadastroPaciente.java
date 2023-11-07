@@ -23,7 +23,5 @@ public record DadosCadastroPaciente(
 
         @NotNull
         @Valid
-        DadosEndereco endereco,
-
-        Boolean ativo) {
+        DadosEndereco endereco) {
 }
