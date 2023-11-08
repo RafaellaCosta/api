@@ -27,10 +27,9 @@ public class MedicoController {
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados,
                                     UriComponentsBuilder uriBuilder) {
 
-        MedicoEntity medico = new MedicoEntity(dados);
-        medicoRepository.save(medico);
+        var medico = medicoRepository.save(new MedicoEntity(dados));
 
-        var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        var uri = uriBuilder.path("/medicos/add/{id}").buildAndExpand(medico.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new MedicoResponse(medico));
     }
