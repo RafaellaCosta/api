@@ -28,7 +28,6 @@ public class MedicoController {
                                     UriComponentsBuilder uriBuilder) {
 
         var medico = medicoRepository.save(new MedicoEntity(dados));
-
         var uri = uriBuilder.path("/medicos/add/{id}").buildAndExpand(medico.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new MedicoResponse(medico));
@@ -61,6 +60,7 @@ public class MedicoController {
         medico.excluir();
 
         return ResponseEntity.noContent().build();
+
     }
 
     @GetMapping(path = "/{id}")

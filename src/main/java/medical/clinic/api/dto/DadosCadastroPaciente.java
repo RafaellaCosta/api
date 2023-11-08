@@ -6,20 +6,20 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroPaciente(
-        @NotBlank
+        @NotBlank(message = "Nome obrigatório")
         String nome,
 
-        @NotBlank
+        @NotBlank(message = "Cpf obrigatório")
         String cpf,
 
         @Email
-        @NotBlank
+        @NotBlank(message = "Email obrigatório")
         String email,
 
-        @NotBlank
+        @NotBlank(message = "Telefone obrigatório")
         String telefone,
 
-        @NotNull
+        @NotNull(message = "Dados do endereço são obrigatórios")
         @Valid
         DadosEndereco endereco) {
 }

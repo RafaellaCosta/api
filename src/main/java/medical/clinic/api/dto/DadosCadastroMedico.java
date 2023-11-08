@@ -8,27 +8,27 @@ import jakarta.validation.constraints.Pattern;
 import medical.clinic.api.enums.Especialidade;
 
 public record DadosCadastroMedico(
-        @NotBlank
+        @NotBlank(message = "Nome obrigatório")
         String nome,
 
-        @NotBlank
+        @NotBlank(message = "Cpf obrigatório")
         String cpf,
 
-        @NotBlank
+        @NotBlank(message = "Email obrigatório")
         @Email
         String email,
 
-        @NotBlank
+        @NotBlank(message = "Telefone obrigatório")
         String telefone,
 
-        @NotBlank
+        @NotBlank(message = "Crm obrigatório")
         @Pattern(regexp = "\\d{4,6}")
         String crm,
 
-        @NotNull
+        @NotNull(message = "Especialidade obrigatório")
         Especialidade especialidade,
 
-        @NotNull
+        @NotNull(message = "Dados do endereço são obrigatórios")
         @Valid
         DadosEndereco endereco) {
 
