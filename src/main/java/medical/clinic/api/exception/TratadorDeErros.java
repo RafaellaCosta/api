@@ -21,7 +21,6 @@ public class TratadorDeErros {
 
         var erros = exception.getFieldErrors();
 
-
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErrosValidacao::new).toList());
     }
 
