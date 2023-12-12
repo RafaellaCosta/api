@@ -10,6 +10,7 @@ spring:
       hibernate:
         format_sql: true
 
+
 api:
   security:
     token:
